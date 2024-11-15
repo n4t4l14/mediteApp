@@ -1,0 +1,7 @@
+{
+  "name": "medite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
