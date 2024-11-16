@@ -1,0 +1,34 @@
+ion-toolbar {
+    text-align: center !important;
+}
+
+ion-card-title {
+    text-align: center;
+}
+
+.options {
+    padding-left: 16px;
+    background: #030512;
+    border-left: 2px solid #ddd;
+    margin-left: 8px;
+}
+
+.options ion-item {
+    --background: transparent;
+    --color: #333;
+}
+
+ion-item {
+    border-bottom: 1px solid #60626b;
+}
+
+ion-icon {
+    color: #60626b;
+}
+
+ion-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}

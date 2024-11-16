@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img alt="Silhouette of mountains" src="assets/images/cardImage.png" />
+
+    <ion-card-header>
+      <ion-card-title>Meditación Guiada</ion-card-title>
+      <ion-card-subtitle></ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list>
+        <ion-item (click)="toggleExpand(1)">
+          <ion-label>Sesiones</ion-label>
+          <ion-icon slot="end" [name]="expandedItem === 1 ? 'chevron-up' : 'chevron-down'"></ion-icon>
+        </ion-item>
+    
+        <div *ngIf="expandedItem === 1" class="options">
+          <ion-item button>Nueva Sesión</ion-item>
+          <ion-item button>Mis Sesiones</ion-item>
+        </div>
+      </ion-list>
+
+      <ion-list>
+        <ion-item (click)="toggleExpand(2)">
+          <ion-label>Diario de Meditación</ion-label>
+          <ion-icon slot="end" [name]="expandedItem === 2 ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+        </ion-item>
+    
+        <div *ngIf="expandedItem === 2" class="options">
+          <ion-item button>Registra Información</ion-item>
+        </div>
+      </ion-list>
+
+      <ion-list>
+        <ion-item (click)="toggleExpand(3)">
+          <ion-label>Configuración</ion-label>
+          <ion-icon slot="end" [name]="expandedItem === 3 ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+        </ion-item>
+    
+        <div *ngIf="expandedItem === 3" class="options">
+          <ion-item button>Notificaciones</ion-item>
+          <ion-item button>Temas</ion-item>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
