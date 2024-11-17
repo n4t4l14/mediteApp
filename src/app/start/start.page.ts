@@ -20,11 +20,13 @@ export class StartPage implements OnInit {
     this.expandedItem = this.expandedItem === item ? null : item;
   }
 
+  navigateToSelectSesion() {
+    this.router.navigate(['/selectSesion']);
+  }
+
   NavigateTo(page: string) {
 
   }
-
-
 
   ngOnInit() {
   }

@@ -1,0 +1,52 @@
+<ion-button class="boton-regresar" (click)="goBack()">
+  <ion-icon name="arrow-back" slot="start" style="font-size: 20px;"></ion-icon>  
+</ion-button>  
+
+<ion-content [fullscreen]="true">
+
+  <img class="imagen" src="assets/images/imagensesion.jpg" />
+
+  <div class="title-container">
+    <ion-card-title>Seleccione su Sesión</ion-card-title>
+  </div>
+
+  <div class="date-time-container">
+    <ion-item class="camposfechas">
+      <input [(ngModel)]="selectedDate" class="fecha-time" type="date" name="fecha" value="" />
+    </ion-item>
+    <ion-item>
+      <input [(ngModel)]="selectedTime" class="fecha-time" type="time" name="horaInicio" value="am" />
+    </ion-item>
+  </div>
+
+  <div class="title-container">
+    <ion-button
+      class="boton-confirmar"
+      [disabled]="!selectedDate || !selectedTime"
+      (click)="confirmSelection()">
+      Confirmar
+    </ion-button>
+  </div>
+
+  <div class="title-container">
+    <ion-text color="danger" *ngIf="!selectedDate || !selectedTime">
+      Fecha seleccionada.
+    </ion-text>
+    <ion-text color="success" *ngIf="selectedDate && selectedTime">
+      Fecha: {{ selectedDate }} <br>
+      y hora: {{ selectedTime }}
+    </ion-text>    
+  </div>
+
+  <ion-modal [isOpen]="isModalOpen" (ionModalDidDismiss)="closeModal()" class="custom-modal">
+    <ng-template>
+      <div class="modal-content">
+        <h2>¡Sesión Agendada!</h2>
+        <p>Fecha: {{ selectedDate }}</p>
+        <p>Hora: {{ selectedTime }}</p>
+        <ion-button (click)="resetFields()">OK</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

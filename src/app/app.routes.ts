@@ -8,5 +8,9 @@ export const routes: Routes = [
   {
     path: 'start',
     loadComponent: () => import('./start/start.page').then( m => m.StartPage)
+  },
+  {
+    path: 'selectSesion',
+    loadComponent: () => import('./selectSesion/selectSesion.page').then( m => m.SelectSesion)
   }
 ];

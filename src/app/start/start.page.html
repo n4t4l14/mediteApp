@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
   <ion-card>
-    <img alt="Silhouette of mountains" src="assets/images/cardImage.png" />
+    <img alt="56" src="assets/images/cardImage.png" />
 
     <ion-card-header>
       <ion-card-title>Meditación Guiada</ion-card-title>
@@ -15,7 +15,7 @@
         </ion-item>
     
         <div *ngIf="expandedItem === 1" class="options">
-          <ion-item button>Nueva Sesión</ion-item>
+          <ion-item (click)="navigateToSelectSesion()" button> Nueva Sesión </ion-item>                   
           <ion-item button>Mis Sesiones</ion-item>
         </div>
       </ion-list>
