@@ -20,8 +20,22 @@ export class StartPage implements OnInit {
     this.expandedItem = this.expandedItem === item ? null : item;
   }
 
-  navigateToSelectSesion() {
-    this.router.navigate(['/selectSesion']);
+  navigateToSelectSesion(item: number) {
+    switch (item){
+      case 1:
+        this.router.navigate(['/selectSesion']);
+        break;
+      case 2:
+        this.router.navigate(['']);
+        break;
+      case 3:
+        this.router.navigate(['/configmod']);
+        break;
+      case 4:
+        this.router.navigate(['/configmod']);
+        break;
+    }
+    
   }
 
   NavigateTo(page: string) {

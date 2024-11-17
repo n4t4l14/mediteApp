@@ -12,5 +12,9 @@ export const routes: Routes = [
   {
     path: 'selectSesion',
     loadComponent: () => import('./selectSesion/selectSesion.page').then( m => m.SelectSesion)
+  },
+  {
+    path: 'configmod',
+    loadComponent: () => import('./configmod/configmod.page').then( m => m.Configmod)
   }
 ];
