@@ -8,10 +8,18 @@ export const routes: Routes = [
   {
     path: 'start',
     loadComponent: () => import('./start/start.page').then( m => m.StartPage)
+  },  
+  {
+    path: 'playback',
+    loadComponent: () => import('./playback/playback.page').then( m => m.Playback)
   },
   {
     path: 'selectSesion',
     loadComponent: () => import('./selectSesion/selectSesion.page').then( m => m.SelectSesion)
+  },
+  {
+    path: 'diario',
+    loadComponent: () => import('./diario/diario.page').then( m => m.Diario)
   },
   {
     path: 'configmod',

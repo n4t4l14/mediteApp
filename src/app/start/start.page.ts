@@ -26,12 +26,15 @@ export class StartPage implements OnInit {
         this.router.navigate(['/selectSesion']);
         break;
       case 2:
-        this.router.navigate(['/diario']);
+        this.router.navigate(['/playback']);
         break;
       case 3:
-        this.router.navigate(['/configmod']);
+        this.router.navigate(['/diario']);
         break;
       case 4:
+        this.router.navigate(['/configmod']);
+        break;
+      case 5:
         this.router.navigate(['/configmod']);
         break;
     }

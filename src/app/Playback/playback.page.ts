@@ -5,13 +5,13 @@ import { IonicModule } from '@ionic/angular'
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.page.html',
-  styleUrls: ['./welcome.page.scss'],
+  selector: 'app-playback',
+  templateUrl: './playback.page.html',
+  styleUrls: ['./playback.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, RouterLink]
 })
-export class WelcomePage implements OnInit {
+export class Playback implements OnInit {
 
   constructor() { }
 

@@ -16,7 +16,7 @@
     
         <div *ngIf="expandedItem === 1" class="options">
           <ion-item (click)="navigateToSelectSesion(1)" button> Nueva Sesión </ion-item>                   
-          <ion-item button>Mis Sesiones</ion-item>
+          <ion-item (click)="navigateToSelectSesion(2)" button>Mis Sesiones</ion-item>
         </div>
       </ion-list>
 
@@ -27,7 +27,7 @@
         </ion-item>
     
         <div *ngIf="expandedItem === 2" class="options">
-          <ion-item  (click)="navigateToSelectSesion(2)" button button>Registra Información</ion-item>
+          <ion-item  (click)="navigateToSelectSesion(3)" button button>Registra Información</ion-item>
         </div>
       </ion-list>
 
@@ -38,8 +38,8 @@
         </ion-item>
     
         <div *ngIf="expandedItem === 3" class="options">
-          <ion-item (click)="navigateToSelectSesion(3)" button button>Notificaciones</ion-item>
-          <ion-item (click)="navigateToSelectSesion(4)" button button>Temas</ion-item>
+          <ion-item (click)="navigateToSelectSesion(4)" button button>Notificaciones</ion-item>
+          <ion-item (click)="navigateToSelectSesion(5)" button button>Temas</ion-item>
         </div>
       </ion-list>
     </ion-card-content>
