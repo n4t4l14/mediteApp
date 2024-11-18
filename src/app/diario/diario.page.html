@@ -1,0 +1,46 @@
+<ion-button class="boton-regresar" (click)="goBack()">
+  <ion-icon name="arrow-back" slot="start" style="font-size: 20px;"></ion-icon>
+</ion-button>
+
+<ion-content [fullscreen]="true">
+
+  <img class="imagen" src="assets/images/imagenConfig.jpeg" />
+
+  <div class="title-container">
+    <ion-card-title>Diarios</ion-card-title>
+  </div>
+
+  <div class="Sesiones">
+    
+    <ion-card-header>
+      <h5>Selecciona una sesion</h5>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Sesion 1 - Oct 2024</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sesion 2 - Oct 2024</ion-label>
+      </ion-item>
+
+     <ion-item>
+        <ion-label>Sesion 3 - Oct 2024</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sesion 4 - Oct 2024</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </div>
+
+  <div class="Sesiones">
+    <ion-card-header>
+      <h5>Registra tus pensamientos</h5>
+    </ion-card-header>
+    <ion-item>
+      <ion-input type= “text”></ion-input>
+    </ion-item>
+  </div>
+</ion-content>

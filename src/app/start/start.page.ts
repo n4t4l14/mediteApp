@@ -26,7 +26,7 @@ export class StartPage implements OnInit {
         this.router.navigate(['/selectSesion']);
         break;
       case 2:
-        this.router.navigate(['']);
+        this.router.navigate(['/diario']);
         break;
       case 3:
         this.router.navigate(['/configmod']);
