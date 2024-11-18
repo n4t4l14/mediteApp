@@ -1,40 +1,77 @@
-/* ion-content {
-    --background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(29, 28, 94, 0.8), rgba(0, 0, 7, 0.8), rgba(0, 0, 0, 0)),
-                    url('../../assets/images/Wellcome.jpeg') no-repeat  top center;
-} */
 
-ion-toolbar {
-    text-align: center !important;
-}
+ion-header {
+    background-color: #f0f0f0;
+    color: #333;
+  }
   
-ion-card-title {
+  ion-toolbar {
+    --background: #6200ea;
+    --color: white;
+  }
+  
+  ion-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+
+  .session-info {
     text-align: center;
-}
+    margin-bottom: 20px;
+  }
+  
+  .session-info ion-text {
+    font-size: 18px;
+    color: #333;
+  }
+  
 
-ion-text {
-    height: center;
-}
-
-.image-header {
-    height: 200px;
-    width: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(29, 28, 94, 0.4), rgba(29, 28, 94, 10)),
-                url('../../assets/images/Wellcome.jpeg') no-repeat  top center;
-    background-size: contain;
-}
-
-.content {
-    background: linear-gradient(to bottom, rgba(29, 28, 94, 10), rgba(29, 28, 94, 0.8), rgba(29, 28, 94, 0.4),  rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
-    padding: 46px;
-    text-align: center;
-    line-height: 1.8;
-}
-
-ion-button {
-    width: 50%;
-}
-
-.div-button-center {
+  ion-progress-bar {
+    --bar-height: 12px;
+    --background: #e0e0e0;
+    --progress-background: #6200ea;
+    margin-top: 10px;
+  }
+  
+ 
+  .controls {
     display: flex;
     justify-content: center;
-}
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .controls ion-button {
+    margin: 0 20px;
+    padding: 10px;
+  }
+  
+  .controls ion-icon {
+    font-size: 40px;
+  }
+  
+ 
+  .time-remaining {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+
+  .end-session {
+    margin-top: 40px;
+  }
+  
+  .end-session ion-button {
+    background-color: #d32f2f;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    font-size: 18px;
+  }
+  
+  .end-session ion-button:hover {
+    background-color: #b71c1c;
+  }
