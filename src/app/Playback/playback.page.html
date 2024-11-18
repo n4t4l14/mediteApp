@@ -1,28 +1,50 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>Bienvenido a MediTé</ion-title>
+    <ion-title>Reproducción de Meditación</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="image-header"></div>
-  <div class="content">
-    <p>La escencia de esta app es mejorar tu calidad de vida.</p>
-    <p>Solo dedica unos minutos que te permitirán liberar tus emociones 
-      y aprender de manera óptima a canalizarlas</p>
+<ion-content class="ion-padding">
+ 
+  <div class="session-info">
+    <ion-text>
+      <h2>Duración: 15 minutos</h2>
+      <p>Tiempo actual: {{ currentTime }}</p>
+    </ion-text>
   </div>
-  <div class="div-button-center">
-    <ion-button expand="block" shape="round" routerLink="./start"> ¡Vamos! </ion-button>
+
+ 
+  <ion-item lines="none">
+    <ion-label>Progreso</ion-label>
+    <ion-progress-bar value="{{ progress / 100 }}" buffer="1"></ion-progress-bar>
+  </ion-item>
+
+ 
+  <div class="controls">
+    <ion-button (click)="skipBackward()" fill="clear" color="medium">
+      <ion-icon name="play-back-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="togglePlay()" color="primary">
+      <ion-icon [name]="isPlaying ? 'pause-circle-outline' : 'play-circle-outline'"></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="skipForward()" fill="clear" color="medium">
+      <ion-icon name="play-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  
+  <ion-item lines="none">
+    <ion-label>Tiempo restante</ion-label>
+    <ion-text class="time-remaining">
+      <h3>{{ duration - (progress / 100) * duration }} min restantes</h3>
+    </ion-text>
+  </ion-item>
+
+
+  <div class="end-session">
+    <ion-button expand="full" color="danger" (click)="stopPlayback()">Detener sesión</ion-button>
   </div>
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-text>
-      <sub> Informese de nuestros 
-        <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">Términos y condiciones</a>
-      </sub> 
-    </ion-text>
-  </ion-toolbar>
-</ion-footer>
 
