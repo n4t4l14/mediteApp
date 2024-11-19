@@ -17,20 +17,8 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-item>
-        <ion-label>Sesion 1 - Oct 2024</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Sesion 2 - Oct 2024</ion-label>
-      </ion-item>
-
-     <ion-item>
-        <ion-label>Sesion 3 - Oct 2024</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Sesion 4 - Oct 2024</ion-label>
+      <ion-item *ngFor="let session of sessions" (click)="selectSession(session)">
+        <ion-label>Sesión: {{ session.id }} - Fecha: {{ session.date }} - Hora: {{ session.time }} - pensamiento: {{ session.pensamiento }}</ion-label>
       </ion-item>
     </ion-card-content>
   </div>
@@ -40,7 +28,8 @@
       <h5>Registra tus pensamientos</h5>
     </ion-card-header>
     <ion-item>
-      <ion-input type= “text”></ion-input>
+      <ion-input type="text" [(ngModel)]="selectedSessionText"></ion-input>
     </ion-item>
+    <ion-button (click)="saveThought()">Guardar pensamiento</ion-button>
   </div>
 </ion-content>

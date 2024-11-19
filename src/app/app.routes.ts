@@ -11,7 +11,7 @@ export const routes: Routes = [
   },  
   {
     path: 'playback',
-    loadComponent: () => import('./playback/playback.page').then( m => m.PlaybackPage)
+    loadComponent: () => import('./Playback/playback.page').then( m => m.PlaybackPage)
   },
   {
     path: 'selectSesion',

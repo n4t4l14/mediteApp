@@ -92,6 +92,7 @@ export class PlaybackPage{
     this.loading = true;
     try {
       this.sessions = await this.sessionService.getSessions();
+      this.sessions.sort((a, b) => a.id - b.id);
     } catch (error) {
       console.error('Error al cargar sesiones:', error);
     } finally {

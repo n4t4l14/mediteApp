@@ -3,26 +3,54 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { SessionService } from '../services/sessionservice';
 
 @Component({
   selector: 'app-diario',
   templateUrl: './diario.page.html',
   styleUrls: ['./diario.page.scss'],
-  standalone: true,
+  standalone: true,  
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class Diario implements OnInit {
-  notifications = [
-    { name: 'Desactivar todas las notificaciones', isEnabled: false },
-    { name: 'Recordatorio de sesiones', isEnabled: false },
-    { name: 'Recordatorio de sesion programada', isEnabled: false },
-    { name: 'Notificación de diario', isEnabled: false },
-  ];
+  sessions: any[] = [];
+  loading: boolean = false;
+  selectedSessionText: string = "";
+  selectedSessionId: number | null = null;
+;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private sessionService: SessionService) {}
 
   goBack() {  
     this.router.navigate(['/start']);
   }
-  ngOnInit() {}
+
+  selectSession(session: { id: number; date: string; time: string; pensamiento: string}) {
+    this.selectedSessionText = `${session.pensamiento}`;
+    this.selectedSessionId = session.id; 
+  }
+
+  saveThought() {
+    if (this.selectedSessionId !== null) {
+      const session = this.sessions.find(s => s.id === this.selectedSessionId);
+      if (session) {
+        session.pensamiento = this.selectedSessionText;
+        this.sessionService.updateSession(session);
+        alert("Pensamiento actualizado");
+        this.selectedSessionText = "";
+      }
+    }
+  }
+
+  async ngOnInit(){
+    this.loading = true;
+    try {
+      this.sessions = await this.sessionService.getSessions();
+      this.sessions.sort((a, b) => a.id - b.id);
+    } catch (error) {
+      console.error('Error al cargar sesiones:', error);
+    } finally {
+      this.loading = false;
+    }
+  }
 }
