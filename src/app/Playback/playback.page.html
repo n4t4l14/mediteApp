@@ -1,3 +1,6 @@
+<ion-button class="boton-regresar" (click)="goBack()">
+  <ion-icon name="arrow-back" slot="start" style="font-size: 20px;"></ion-icon>  
+</ion-button>  
 <ion-header>
   <ion-toolbar>
     <ion-title>Reproducción de Meditación</ion-title>
@@ -46,5 +49,15 @@
   <div class="end-session">
     <ion-button expand="full" color="danger" (click)="stopPlayback()">Detener sesión</ion-button>
   </div>
+  <ion-item>
+  <div *ngIf="loading">Cargando sesiones...</div>
+  <div *ngIf="!loading && sessions.length === 0">No hay sesiones registradas.</div>
+  <ul>
+    <li *ngFor="let session of sessions">
+      Fecha: {{ session.date }} - Hora: {{ session.time }}
+    </li>
+  </ul>
+</ion-item>
+
 </ion-content>
 

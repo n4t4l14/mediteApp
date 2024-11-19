@@ -1,44 +1,17 @@
-import { Component } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PlaybackPage } from './playback.page';
 
-@Component({
-  selector: 'app-playback',
-  templateUrl: './playback.page.html',
-  styleUrls: ['./playback.page.scss'],
-})
-export class PlaybackPage {
-  isPlaying: boolean = false;
-  progress: number = 0; 
-  currentTime: string = '0:00';
+describe('PlaybackPage', () => {
+  let component: PlaybackPage;
+  let fixture: ComponentFixture<PlaybackPage>;
 
-  togglePlay() {
-    this.isPlaying = !this.isPlaying;
-    if (this.isPlaying) {
-      this.progress = 1; 
-    }
-  }
+  beforeEach(() => {
+    fixture = TestBed.createComponent(PlaybackPage);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  stopPlayback() {
-    this.isPlaying = false;
-    this.progress = 0; 
-    this.currentTime = '0:00'; 
-  }
-
-  skipForward() {
-    this.progress = Math.min(this.progress + 10, 100);
-  }
-
-  skipBackward() {
-    this.progress = Math.max(this.progress - 10, 0); 
-  }
-
-  updateCurrentTime() {
-    const totalSeconds = Math.floor((this.progress / 100) * 15 * 60); 
-    const minutes = Math.floor(totalSeconds / 60); 
-    const seconds = totalSeconds % 60; 
-  
-    this.currentTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  }
-  
-}
-
-
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

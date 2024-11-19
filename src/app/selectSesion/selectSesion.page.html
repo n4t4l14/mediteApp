@@ -12,30 +12,36 @@
 
   <div class="date-time-container">
     <ion-item class="camposfechas">
-      <input [(ngModel)]="selectedDate" class="fecha-time" type="date" name="fecha" value="" />
+      <input [(ngModel)]="selectedDate" class="fecha-time" type="date" name="fecha" />
     </ion-item>
     <ion-item>
-      <input [(ngModel)]="selectedTime" class="fecha-time" type="time" name="horaInicio" value="am" />
+      <input [(ngModel)]="selectedTime" class="fecha-time" type="time" name="horaInicio" />
     </ion-item>
   </div>
 
   <div class="title-container">
+    <!-- Botón de confirmación con indicador de carga -->
     <ion-button
       class="boton-confirmar"
-      [disabled]="!selectedDate || !selectedTime"
+      [disabled]="!selectedDate || !selectedTime || isLoading"
       (click)="confirmSelection()">
-      Confirmar
+      <ion-spinner *ngIf="isLoading" name="dots" slot="start"></ion-spinner>
+      {{ isLoading ? 'Guardando...' : 'Confirmar' }}
     </ion-button>
   </div>
 
   <div class="title-container">
     <ion-text color="danger" *ngIf="!selectedDate || !selectedTime">
-      Fecha seleccionada.
+      Por favor seleccione fecha y hora.
     </ion-text>
     <ion-text color="success" *ngIf="selectedDate && selectedTime">
       Fecha: {{ selectedDate }} <br>
-      y hora: {{ selectedTime }}
+      Hora: {{ selectedTime }}
     </ion-text>    
+  </div>
+
+  <div class="error" *ngIf="errorMessage">
+    <ion-text class="texterror" color="danger">{{ errorMessage }}</ion-text>
   </div>
 
   <ion-modal [isOpen]="isModalOpen" (ionModalDidDismiss)="closeModal()" class="custom-modal">

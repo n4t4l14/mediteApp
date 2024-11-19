@@ -94,13 +94,27 @@
   }
 
   .custom-modal {
-    --background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
-    --backdrop-opacity: 0; /* Elimina la capa más clara detrás del modal */
-    --z-index: 1000; /* Asegúrate de que esté siempre en la parte superior */
+    --background: rgba(0, 0, 0, 0.5);
+    --backdrop-opacity: 0; 
+    --z-index: 1000; 
 
   justify-content: center;
   align-items: center;
   height: 100%;
+  }
+
+  .error{
+    margin: 50px,0,0;
+  }
+  .texterror{
+    background: rgb(250, 246, 246);
+    color: red;
+    border-radius: 10%;
+    width: 60%;
+    --margin-top: 20px;
+    --text-align: center;
+    --margin: 20 px , 20 px;
+    --padding: 20px, 20px, 20px;
   }
   
   .modal-content {

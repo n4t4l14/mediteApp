@@ -1,21 +1,33 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SessionService } from '../services/sessionservice';
+import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-playback',
   standalone: true, 
   templateUrl: './playback.page.html', 
   styleUrls: ['./playback.page.scss'], 
-  imports: [CommonModule, IonicModule, FormsModule], 
+  imports: [IonicModule, FormsModule, CommonModule],  
+  
 })
-export class PlaybackPage {
+export class PlaybackPage{
   isPlaying = false; 
   progress = 0; 
   currentTime = '0:00'; 
   duration = 15; 
   interval: any; 
+  sessions: any[] = [];
+  loading: boolean = false;
+
+  constructor(private router: Router,private sessionService: SessionService) {}
+
+  goBack() {  
+    this.router.navigate(['/start']);
+  }
+
 
    togglePlay() {
     this.isPlaying = !this.isPlaying;
@@ -75,6 +87,18 @@ export class PlaybackPage {
     this.progress = Math.max(this.progress - 10, 0);
     this.updateCurrentTime();
   }
+
+  async ngOnInit(){
+    this.loading = true;
+    try {
+      this.sessions = await this.sessionService.getSessions();
+    } catch (error) {
+      console.error('Error al cargar sesiones:', error);
+    } finally {
+      this.loading = false;
+    }
+  }
+
 }
 
 
