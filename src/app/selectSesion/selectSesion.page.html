@@ -19,22 +19,45 @@
     </ion-item>
   </div>
 
+  <!-- seleccion de tema de sesion -->
+  <div class="container-session">
+    <ion-card class="container-session--card" 
+      *ngFor="let session of sessions"
+      [class.selected]="session.selected"
+      (click)="selectSession(session)">
+      <div>
+        <img alt="session.tittle" [src]="session.image"/>
+      </div>
+      <div class="container-session--text_card">
+        <ion-card-header>
+          <ion-card-subtitle>{{ session.title }}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <b>Objetivo:</b> {{ session.objective }}
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </div>
+
+  <!-- Boton  -->
   <div class="title-container">
     <ion-button
       class="boton-confirmar"
-      [disabled]="!selectedDate || !selectedTime"
+      [disabled]="!isConfirmActive"
       (click)="confirmSelection()">
       Confirmar
     </ion-button>
   </div>
 
   <div class="title-container">
-    <ion-text color="danger" *ngIf="!selectedDate || !selectedTime">
+    <ion-text color="danger" *ngIf="!isConfirmActive">
       Fecha seleccionada.
     </ion-text>
-    <ion-text color="success" *ngIf="selectedDate && selectedTime">
+    <ion-text color="success" *ngIf="isConfirmActive">
       Fecha: {{ selectedDate }} <br>
-      y hora: {{ selectedTime }}
+      y hora: {{ selectedTime }} <br>
+      Sesion: {{ selectedSession?.title}}
     </ion-text>    
   </div>
 
@@ -44,6 +67,7 @@
         <h2>¡Sesión Agendada!</h2>
         <p>Fecha: {{ selectedDate }}</p>
         <p>Hora: {{ selectedTime }}</p>
+        <p>Sesion:{{ selectedSession?.title}} </p>
         <ion-button (click)="resetFields()">OK</ion-button>
       </div>
     </ng-template>
