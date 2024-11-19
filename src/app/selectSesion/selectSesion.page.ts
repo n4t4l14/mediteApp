@@ -16,7 +16,51 @@ import { ModalController } from '@ionic/angular';
 export class SelectSesion implements OnInit {
   selectedDate: string = '';
   selectedTime: string = '';
-  isModalOpen: boolean = false;
+  isModalOpen: boolean = false; 
+  selectedSession: any = null; //sesion seleccionada
+  isConfirmActive: boolean = false;// estado del boton Confirmar
+
+  //Lista de sessiones
+
+  sessions = [
+    {
+      title: 'Relajación Profunda',
+      objective: 'Reducir el estrés y liberar tensiones acumuladas en el cuerpo.',
+      image: 'assets/images/img-Relajacion.jpg',
+      selected: false,
+    },
+    {
+      title: 'Cultivar la Gratitud',
+      objective: 'Desarrollar una mentalidad positiva y reconocer las cosas buenas en tu vida.',
+      image: 'assets/images/img-gratitud.jpg',
+      selected: false,
+    },
+    {
+      title: 'Atención Plena (Mindfulness)',
+      objective: 'Vivir el momento presente con plena conciencia y sin juicio.',
+      image: 'assets/images/img-mindfulness.jpg',
+      selected: false,
+    },
+    {
+      title: 'Autoaceptación',
+      objective: 'Promover una relación más amable contigo mismo y fortalecer la autoestima.',
+      image: 'assets/images/img-autoaceptacion.jpg',
+      selected: false,
+    },
+  ];
+
+  //seleccionar una sesion
+  selectSession(session: any) {
+    this.sessions.forEach ((s) => (s.selected = false)); //deselecciona todas las sesiones
+    session.selected = true;
+    this.selectedSession = session;
+    this.updateConfirmState();
+  }
+
+  updateConfirmState() {
+    this.isConfirmActive = !!this.selectedDate && !!this.selectedTime && !!this.selectedSession;
+  }
+
   isLoading: boolean = false;
   errorMessage: string = "";
 
@@ -26,31 +70,10 @@ export class SelectSesion implements OnInit {
     this.router.navigate(['/start']);
   }
 
-  async confirmSelection() {
+  confirmSelection() {
     if (this.selectedDate && this.selectedTime) {
-      this.isLoading = true; 
-
-      try {
-        if (this.selectedDate && this.selectedTime) {
-          const selectedDateTime = new Date(`${this.selectedDate}T${this.selectedTime}`);
-          const now = new Date();
-        
-        if (selectedDateTime < now) {
-          this.errorMessage = 'La fecha y hora seleccionadas no pueden ser menores a la actual.';
-          this.isModalOpen = false; 
-          return;
-        } else {
-          this.errorMessage = '';
-        }
-      }
-        await this.sessionService.createSession(this.selectedDate, this.selectedTime);
-        this.isModalOpen = true;
-      } catch (error) {
-        console.error('Error al guardar la sesión:', error);
-        alert('Hubo un error al guardar la sesión. Inténtalo de nuevo.');
-      } finally {
-        this.isLoading = false;
-      }
+      // Abre el modal solo si hay valores seleccionados
+      this.isModalOpen = true;
     }
   }
 
@@ -61,7 +84,10 @@ export class SelectSesion implements OnInit {
   resetFields() {
     this.selectedDate = '';
     this.selectedTime = '';
-    this.isModalOpen = false;
+    this.selectedSession = '';
+    this.sessions.forEach ((s) => (s.selected = false));
+    this.updateConfirmState();
+    this.closeModal();
   }
 
   ngOnInit() {}

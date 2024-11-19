@@ -29,7 +29,7 @@
   .title-container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   
   .date-time-container {
@@ -46,6 +46,51 @@
     border: 0;
     padding: 0;
     background-color: transparent;
+  }
+
+  .container-session {
+    width: 90%;
+    margin: 0 auto;
+    height: 210px;
+    margin-bottom: 50px;
+  }
+
+  .container-session--card{
+    display: flex;
+    opacity: 0.85;
+    background: #090b21b8;
+    margin: 16px;
+  }
+
+  .container-session--card ion-card-header {
+    flex-direction: column;
+
+
+  }
+
+  .container-session--text_card {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .container-session--text_card ion-card-header {
+    padding-top: 6px;
+    padding-bottom: 4px;
+  }
+  .container-session--text_card ion-card-subtitle {
+    color: rgb(212, 214, 214);
+  }
+
+  .container-session--text_card ion-card-content {
+    padding: 4px 6px;
+    color: rgb(212, 214, 214);
+  }
+
+  .container-session img {
+    width: 100px;
+    height: 100px;
   }
   
   .boton-confirmar {
