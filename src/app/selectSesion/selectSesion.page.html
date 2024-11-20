@@ -19,7 +19,7 @@
     </ion-item>
   </div>
 
-  <!-- seleccion de tema de sesion -->
+  
   <div class="container-session">
     <ion-card class="container-session--card" 
       *ngFor="let session of sessions"
@@ -40,17 +40,20 @@
     </ion-card>
   </div>
 
-  <!-- Boton  -->
-  <div class="title-container">
-    <!-- Botón de confirmación con indicador de carga -->
-    <ion-button
-      class="boton-confirmar"
-      [disabled]="!selectedDate || !selectedTime || isLoading"
-      (click)="confirmSelection()">
-      <ion-spinner *ngIf="isLoading" name="dots" slot="start"></ion-spinner>
-      {{ isLoading ? 'Guardando...' : 'Confirmar' }}
-    </ion-button>
-  </div>
+  <ion-footer class="footer">
+    <ion-toolbar>
+      <ion-buttons slot="end" class="button-container">
+        <ion-button
+          class="boton-confirmar"
+          [disabled]="!selectedDate || !selectedTime || isLoading"
+          (click)="confirmSelection()">
+          <ion-spinner *ngIf="isLoading" name="dots" slot="start"></ion-spinner>
+          {{ isLoading ? 'Guardando...' : 'Confirmar' }}
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+ 
 
   <div class="title-container">
     <ion-text color="danger" *ngIf="!selectedDate || !selectedTime">

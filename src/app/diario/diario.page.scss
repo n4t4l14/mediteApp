@@ -43,17 +43,38 @@ h5 {
 ion-item {
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between; /* Para separar los elementos a los extremos */
-  align-items: center; /* Alinea verticalmente el contenido */
+  justify-content: space-between; 
+  align-items: center;
 }
 
 ion-toggle {
-  transform: scale(0.7); /* Reduce el tamaño del toggle */
-  margin-left: auto; /* Empuja el toggle hacia la derecha */
+  transform: scale(0.7);
+  margin-left: auto;
 }
 
 ion-label {
-  flex-grow: 1; /* El label ocupa el espacio restante */
-  text-align: left; /* Alinea el texto del label a la izquierda */
-  margin-right: 10px; /* Añade espacio entre el label y el toggle */
+  flex-grow: 1;
+  text-align: left;
+  margin-right: 10px;
 }
+
+.Sesiones { 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  text-align: center;  
+  margin: 2px; 
+} 
+  
+  .Sesiones ion-card-header { 
+    width: 100%; 
+   } 
+   
+   .Sesiones ion-item { 
+    width: 100%; 
+    margin-bottom: 10px; 
+  } 
+
+  .Sesiones ion-button {
+     align-self: center; 
+    }

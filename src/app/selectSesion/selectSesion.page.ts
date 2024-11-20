@@ -72,7 +72,7 @@ export class SelectSesion implements OnInit {
 
   confirmSelection() {
     if (this.selectedDate && this.selectedTime) {
-      // Abre el modal solo si hay valores seleccionados
+            
       this.isModalOpen = true;
     }
   }

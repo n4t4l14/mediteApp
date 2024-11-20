@@ -57,3 +57,22 @@ ion-label {
   text-align: left; /* Alinea el texto del label a la izquierda */
   margin-right: 10px; /* Añade espacio entre el label y el toggle */
 }
+
+.boton-container {
+  position: fixed;
+  top: 20px; /* Ajusta según sea necesario */
+  left: 10px;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.boton-regresar {
+  color: white;
+  background: transparent;
+  font-size: 14px;
+  --background: none;
+  --color: white;
+}
+

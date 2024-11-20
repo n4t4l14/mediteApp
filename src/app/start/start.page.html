@@ -7,41 +7,36 @@
       <ion-card-subtitle></ion-card-subtitle>
     </ion-card-header>
   
-    <ion-card-content>
-      <ion-list>
-        <ion-item (click)="toggleExpand(1)">
+    <ion-accordion-group>
+      <ion-accordion value="sesiones">
+        <ion-item slot="header">
           <ion-label>Sesiones</ion-label>
-          <ion-icon slot="end" [name]="expandedItem === 1 ? 'chevron-up' : 'chevron-down'"></ion-icon>
         </ion-item>
-    
-        <div *ngIf="expandedItem === 1" class="options">
-          <ion-item (click)="navigateToSelectSesion(1)" button> Nueva Sesión </ion-item>                   
-          <ion-item (click)="navigateToSelectSesion(2)" button>Mis Sesiones</ion-item>
+        <div slot="content">
+          <ion-item (click)="navigateToSelectSesion(1)" button> Nueva Sesión </ion-item>
+          <ion-item (click)="navigateToSelectSesion(2)" button> Mis Sesiones </ion-item>
         </div>
-      </ion-list>
-
-      <ion-list>
-        <ion-item (click)="toggleExpand(2)">
+      </ion-accordion>
+    
+      <ion-accordion value="diario">
+        <ion-item slot="header">
           <ion-label>Diario de Meditación</ion-label>
-          <ion-icon slot="end" [name]="expandedItem === 2 ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
         </ion-item>
-    
-        <div *ngIf="expandedItem === 2" class="options">
-          <ion-item  (click)="navigateToSelectSesion(3)" button button>Registra Información</ion-item>
+        <div slot="content">
+          <ion-item (click)="navigateToSelectSesion(3)" button>Registra Información</ion-item>
         </div>
-      </ion-list>
-
-      <ion-list>
-        <ion-item (click)="toggleExpand(3)">
+      </ion-accordion>
+    
+      <ion-accordion value="configuracion">
+        <ion-item slot="header">
           <ion-label>Configuración</ion-label>
-          <ion-icon slot="end" [name]="expandedItem === 3 ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
         </ion-item>
-    
-        <div *ngIf="expandedItem === 3" class="options">
-          <ion-item (click)="navigateToSelectSesion(4)" button button>Notificaciones</ion-item>
-          <ion-item (click)="navigateToSelectSesion(5)" button button>Temas</ion-item>
+        <div slot="content">
+          <ion-item (click)="navigateToSelectSesion(4)" button> Notificaciones </ion-item>
+          <ion-item (click)="navigateToSelectSesion(5)" button> Temas </ion-item>
         </div>
-      </ion-list>
-    </ion-card-content>
+      </ion-accordion>
+    </ion-accordion-group>
+    
   </ion-card>
 </ion-content>
