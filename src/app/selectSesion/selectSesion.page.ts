@@ -19,35 +19,8 @@ export class SelectSesion implements OnInit {
   isModalOpen: boolean = false; 
   selectedSession: any = null; //sesion seleccionada
   isConfirmActive: boolean = false;// estado del boton Confirmar
-
-  //Lista de sessiones
-
-  sessions = [
-    {
-      title: 'Relajación Profunda',
-      objective: 'Reducir el estrés y liberar tensiones acumuladas en el cuerpo.',
-      image: 'assets/images/img-Relajacion.jpg',
-      selected: false,
-    },
-    {
-      title: 'Cultivar la Gratitud',
-      objective: 'Desarrollar una mentalidad positiva y reconocer las cosas buenas en tu vida.',
-      image: 'assets/images/img-gratitud.jpg',
-      selected: false,
-    },
-    {
-      title: 'Atención Plena (Mindfulness)',
-      objective: 'Vivir el momento presente con plena conciencia y sin juicio.',
-      image: 'assets/images/img-mindfulness.jpg',
-      selected: false,
-    },
-    {
-      title: 'Autoaceptación',
-      objective: 'Promover una relación más amable contigo mismo y fortalecer la autoestima.',
-      image: 'assets/images/img-autoaceptacion.jpg',
-      selected: false,
-    },
-  ];
+  sessions: any[] = [];
+  loading: boolean = false;;
 
   //seleccionar una sesion
   selectSession(session: any) {
@@ -90,5 +63,15 @@ export class SelectSesion implements OnInit {
     this.closeModal();
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.loading = true;
+    try {
+      this.sessions = await this.sessionService.getSelectSessions();
+      this.sessions.sort((a, b) => a.id - b.id);
+    } catch (error) {
+      console.error('Error al cargar el tipo de sesiones:', error);
+    } finally {
+      this.loading = false;
+    }
+  }
 }

@@ -16,7 +16,7 @@ export class SessionService {
     const sessionData = {
       date,
       time,
-      pensamiento: '', // Campo inicializado vacío para almacenar pensamientos.
+      pensamiento: '', 
       createdAt: new Date().toISOString(),
     };
 
@@ -65,6 +65,25 @@ export class SessionService {
       return sessions;
     } catch (error) {
       console.error('Error al obtener las sesiones:', error);
+      throw error;
+    }
+  }
+
+  async getSelectSessions() {
+    try {
+      const sessionsCollection = collection(this.firestore, 'selectsessions');
+      const q = query(sessionsCollection);
+      const querySnapshot = await getDocs(q);
+
+      const selectsessions = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log('Tipos de sesiones obtenidas:', selectsessions);
+      return selectsessions;
+    } catch (error) {
+      console.error('Error al obtener el tipo de sesiones:', error);
       throw error;
     }
   }

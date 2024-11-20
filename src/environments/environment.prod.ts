@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   firebase: {
     apiKey: "AIzaSyB_HgDxDIEG1FvKjhz34MK_0Q292uo5JIk",
     authDomain: "mediteappdb.firebaseapp.com",
