@@ -49,7 +49,7 @@ export class SelectSesion implements OnInit {
     },
   ];
 
-  //seleccionar una sesion
+  //seleccionar una sesion.
   selectSession(session: any) {
     this.sessions.forEach ((s) => (s.selected = false)); //deselecciona todas las sesiones
     session.selected = true;
