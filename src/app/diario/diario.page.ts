@@ -46,6 +46,7 @@ export class Diario implements OnInit {
     this.loading = true;
     try {
       this.sessions = await this.sessionService.getSessions();
+      this.sessions = this.sessions.filter(session => session.check == true);
       this.sessions.sort((a, b) => a.id - b.id);
     } catch (error) {
       console.error('Error al cargar sesiones:', error);

@@ -3,8 +3,9 @@
 </ion-button>  
 
 <ion-content [fullscreen]="true">
-
-  <img class="imagen" src="assets/images/imagensesion.jpg" />
+  <div class="background-container">
+    <img class="imagen" src="assets/images/imagensesion.jpg" />
+  </div>
 
   <div class="title-container">
     <ion-card-title>Seleccione su Sesión</ion-card-title>
@@ -19,33 +20,23 @@
     </ion-item>
   </div>
 
+  <ion-card-header>
+    <h5>Selecciona una sesión</h5>
+  </ion-card-header>
   
-  <div class="container-session">
-    <ion-card class="container-session--card" 
-      *ngFor="let session of sessions"
-      [class.selected]="session.selected"
-      (click)="selectSession(session)">
-      <div>
-        <img alt="session.tittle" [src]="session.image"/>
-      </div>
-      <div class="container-session--text_card">
-        <ion-card-header>
-          <ion-card-subtitle>{{ session.title }}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-          <b>Objetivo:</b> {{ session.objective }}
-        </ion-card-content>
-      </div>
-    </ion-card>
-  </div>
+  <ion-card-content class="transparent-bg">
+    <ion-item *ngFor="let session of selectsessions" (click)="selectSession(session)">
+      <ion-label>{{ session.title }}: {{ session.objective }}</ion-label>
+      <img [src]="session.image" alt="" style="width: 100px; height: auto;">
+    </ion-item>
+  </ion-card-content>
 
   <ion-footer class="footer">
     <ion-toolbar>
       <ion-buttons slot="end" class="button-container">
         <ion-button
           class="boton-confirmar"
-          [disabled]="!selectedDate || !selectedTime || isLoading"
+          [disabled]="!selectedDate || !selectedTime || !selectedSession || isLoading"
           (click)="confirmSelection()">
           <ion-spinner *ngIf="isLoading" name="dots" slot="start"></ion-spinner>
           {{ isLoading ? 'Guardando...' : 'Confirmar' }}
@@ -53,7 +44,6 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
- 
 
   <div class="title-container">
     <ion-text color="danger" *ngIf="!selectedDate || !selectedTime">
@@ -61,7 +51,8 @@
     </ion-text>
     <ion-text color="success" *ngIf="isConfirmActive">
       Fecha: {{ selectedDate }} <br>
-      Hora: {{ selectedTime }}
+      Hora: {{ selectedTime }} <br>
+      Sesion: {{ selectedSession?.title}} 
     </ion-text>    
   </div>
 
@@ -75,10 +66,9 @@
         <h2>¡Sesión Agendada!</h2>
         <p>Fecha: {{ selectedDate }}</p>
         <p>Hora: {{ selectedTime }}</p>
-        <p>Sesion:{{ selectedSession?.title}} </p>
+        <p>Sesion: {{ selectedSession?.title}} </p>
         <ion-button (click)="resetFields()">OK</ion-button>
       </div>
     </ng-template>
   </ion-modal>
-
 </ion-content>

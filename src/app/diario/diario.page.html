@@ -17,7 +17,7 @@
 
     <ion-card-content>
       <ion-item *ngFor="let session of sessions" (click)="selectSession(session)">
-        <ion-label>Sesión: {{ session.id }} - Fecha: {{ session.date }} - Hora: {{ session.time }} - pensamiento: {{ session.pensamiento }}</ion-label>
+        <ion-label>Fecha: {{ session.date }} - Hora: {{ session.time }} - pensamiento: {{ session.pensamiento }}</ion-label>
       </ion-item>
     </ion-card-content>
   </div>

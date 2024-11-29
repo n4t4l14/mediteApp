@@ -37,7 +37,7 @@ h5 {
 .title-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .Sesiones {
@@ -61,3 +61,45 @@ ion-label {
   text-align: left;
   margin-right: 10px; 
 }
+
+/* Transparent backgrounds for div elements */
+.date-time-container, .transparent-bg {
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;  
+  text-align: center;
+}
+
+/* Styling for the "Confirmar" button */
+.boton-confirmar {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 20px auto;
+  display: block;
+}
+
+.boton-confirmar:disabled {
+  background-color: lightgray !important;
+  color: gray !important;
+}
+
+.footer {
+  padding: 0;
+  background-color: transparent !important;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Modal content styling */
+.custom-modal .modal-content {
+  padding: 20px;
+  text-align: center;
+}
+

@@ -12,12 +12,14 @@ export class SessionService {
    * @param date.
    * @param time.
    */
-  async createSession(date: string, time: string) {
+  async createSession(date: string, time: string, typesession: string) {
     const sessionData = {
       date,
       time,
-      pensamiento: '', // Campo inicializado vacío para almacenar pensamientos.
+      pensamiento: '', 
       createdAt: new Date().toISOString(),
+      typesession,
+      check: false
     };
 
     try {
@@ -34,7 +36,7 @@ export class SessionService {
    * 
    * @param session 
    */
-  async updateSession(session: { id: string; date: string; time: string; pensamiento: string }): Promise<void> {
+  async updateSession(session: { id: string; date: string; time: string; pensamiento: string ; check: boolean}): Promise<void> {
     try {
       const sessionDocRef = doc(this.firestore, `sessions/${session.id}`);
       await updateDoc(sessionDocRef, {
@@ -42,6 +44,7 @@ export class SessionService {
         time: session.time,
         pensamiento: session.pensamiento,
         updatedAt: new Date().toISOString(),
+        check: session.check
       });
       console.log('Sesión actualizada correctamente.');
     } catch (error) {
@@ -65,6 +68,25 @@ export class SessionService {
       return sessions;
     } catch (error) {
       console.error('Error al obtener las sesiones:', error);
+      throw error;
+    }
+  }
+
+  async getSelectSessions() {
+    try {
+      const selectsessionsCollection = collection(this.firestore, 'selectsessions');
+      const q = query(selectsessionsCollection, orderBy('title', 'asc'));
+      const querySnapshot = await getDocs(q);
+
+      const sessions = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      console.log('opciones de sesiones obtenidas:', sessions);
+      return sessions;
+    } catch (error) {
+      console.error('Error al obtener las opciones de sesiones:', error);
       throw error;
     }
   }
