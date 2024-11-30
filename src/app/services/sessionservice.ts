@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { Firestore, collection, doc, getDocs, query, orderBy, addDoc, updateDoc } from '@angular/fire/firestore';
+import { where } from 'firebase/firestore';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SessionService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private auth: Auth) {
+  }
 
   /**
    *.
@@ -13,13 +16,19 @@ export class SessionService {
    * @param time.
    */
   async createSession(date: string, time: string, typesession: string) {
+    const user = this.auth.currentUser;
+    if (!user) {
+      throw new Error('No hay usuario autenticado.');
+    }
     const sessionData = {
+      
       date,
       time,
       pensamiento: '', 
       createdAt: new Date().toISOString(),
       typesession,
-      check: false
+      check: false,
+      userId: user.uid
     };
 
     try {
@@ -54,9 +63,19 @@ export class SessionService {
   }
 
   async getSessions() {
-    try {
+    
+      const user = this.auth.currentUser;   
+      console.log('Usuario autenticado: ' + user?.uid);     
+      if (!user) {
+        throw new Error('No hay usuario autenticado.');
+      }
+      try {
       const sessionsCollection = collection(this.firestore, 'sessions');
-      const q = query(sessionsCollection, orderBy('createdAt', 'desc'));
+      const q = query(
+        sessionsCollection, 
+        where('userId', '==', user.uid),
+        orderBy('date', 'desc')
+      );
       const querySnapshot = await getDocs(q);
 
       const sessions = querySnapshot.docs.map((doc) => ({

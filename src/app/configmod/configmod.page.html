@@ -13,12 +13,20 @@
 
   <div class="notificaciones">
     <h5>Notificaciones</h5>
-
+  
+    <ion-item>
+      <ion-label>Activar/Desactivar todas las notificaciones</ion-label>
+      <ion-toggle (ionChange)="toggleAllNotifications($event)"></ion-toggle>
+    </ion-item>
+  
     <ion-item *ngFor="let notification of notifications">
       <ion-label>{{ notification.name }}</ion-label>
       <ion-toggle [(ngModel)]="notification.isEnabled"></ion-toggle>
     </ion-item>
+  
+    <ion-button expand="full" (click)="savePreferences()">Guardar Preferencias</ion-button>
   </div>
+  
 
   <ion-card-header>
     <h5>Temas</h5>

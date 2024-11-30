@@ -1,9 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  {
+  /*{
     path: '',
     loadComponent: ()=> import('./welcome/welcome.page').then(m => m.WelcomePage)
+  },*/
+  {
+    path: '',
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage),
   },
   {
     path: 'start',
@@ -11,7 +15,7 @@ export const routes: Routes = [
   },  
   {
     path: 'playback',
-    loadComponent: () => import('./Playback/playback.page').then( m => m.PlaybackPage)
+    loadComponent: () => import('./playback/playback.page').then( m => m.PlaybackPage)
   },
   {
     path: 'selectSesion',
@@ -24,5 +28,13 @@ export const routes: Routes = [
   {
     path: 'configmod',
     loadComponent: () => import('./configmod/configmod.page').then( m => m.Configmod)
-  }
+  },
+  {
+    path: 'register',
+    loadComponent: () => import('./register/register.page').then(m => m.RegisterPage),
+  },
+  {
+    path: '',
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage),
+  },
 ];

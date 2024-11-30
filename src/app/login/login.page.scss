@@ -1,0 +1,67 @@
+/* ion-content {
+    --background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(29, 28, 94, 0.8), rgba(0, 0, 7, 0.8), rgba(0, 0, 0, 0)),
+                    url('../../assets/images/Wellcome.jpeg') no-repeat  top center;
+} */
+
+ion-toolbar {
+    text-align: center !important;
+}
+  
+ion-card-title {
+    text-align: center;
+}
+
+ion-text {
+    height: center;
+}
+
+.image-header {
+    height: 200px;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(29, 28, 94, 0.4), rgba(29, 28, 94, 10)),
+                url('../../assets/images/Wellcome.jpeg') no-repeat  top center;
+    background-size: contain;
+}
+
+.content {
+    background: linear-gradient(to bottom, rgba(29, 28, 94, 10), rgba(29, 28, 94, 0.8), rgba(29, 28, 94, 0.4),  rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    padding: 46px;
+    text-align: center;
+    line-height: 1.8;
+    justify-content: center;
+}
+
+ion-button {
+    width: 50%;
+    justify-content: center;
+}
+
+.div-button-center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.boton{
+    text-align: center;
+    
+    margin: auto;
+    margin-top: 10px;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 10px;
+  
+    a {
+      color: #00bcd4; /* Azul cielo */
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: #ffffff; /* Cambia a blanco al pasar el ratón */
+      }
+    }
+  }
+  
